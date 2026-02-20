@@ -1,0 +1,163 @@
+{
+  "info": {
+    "_postman_id": "ad12ff30-00bf-4c5b-bd65-b17fa43ff8b2",
+    "name": "My Collection",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52380851",
+    "_collection_link": "https://go.postman.co/collection/52380851-ad12ff30-00bf-4c5b-bd65-b17fa43ff8b2?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get user",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://em.staging.api.onereach.ai/http/1b3bebb7-e882-4f1e-a74b-ee381bfa69d6/users?id=9fb8dc5c-9ce8-487f-ae8e-116786471995",
+          "protocol": "https",
+          "host": [
+            "em",
+            "staging",
+            "api",
+            "onereach",
+            "ai"
+          ],
+          "path": [
+            "http",
+            "1b3bebb7-e882-4f1e-a74b-ee381bfa69d6",
+            "users"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "9fb8dc5c-9ce8-487f-ae8e-116786471995"
+            }
+          ]
+        },
+        "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+      },
+      "response": []
+    },
+    {
+      "name": "Create new",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test(\"Response time is less than 200ms\", function () {\r",
+              "    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"name\": \"Svitlana2\",\n    \"age\": 23,\n    \"gender\": \"female\",\n    \"city\": \"{{my_city}}\"\n\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}{{resource}}",
+          "host": [
+            "{{base_url}}{{resource}}"
+          ]
+        },
+        "description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+      },
+      "response": []
+    },
+    {
+      "name": "Update user",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Body matches string\", function () {\r",
+              "    pm.expect(pm.response.text()).to.include(\"cat\");\r",
+              "});\r",
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\t\"name\": \"Svit\",\r\n    \"age\": 120,\r\n    \"gender\": \"female\",\r\n    \"city\": \"{{my_city}}\"\r\n\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}{{resource}}",
+          "host": [
+            "{{base_url}}{{resource}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\t\"name\": \"Svit\",\r\n    \"age\": 120,\r\n    \"gender\": \"female\",\r\n    \"city\": \"{{my_city}}\"\r\n\r\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}{{resource}}?id={{my_id}}",
+          "host": [
+            "{{base_url}}{{resource}}"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "{{my_id}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
